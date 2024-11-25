@@ -3,25 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUT Builder</title>
+    <title>SquadBuilderPro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .blur-background {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1607627000458-210e8d2bdb1d?q=80&w=2049&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            backdrop-filter: blur(5px);
+        }
+
+        .player-card {
+            transition: transform 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .sponsor-scroll {
+            animation: scroll 15s linear infinite;
+            animation-play-state: running;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .gradient-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col bg-gray-100">
+<body class="min-h-screen flex flex-col blur-background text-white">
     <!-- Navigation Bar -->
-    <nav class="bg-blue-800 text-white shadow-lg">
+    <nav class="bg-black/50 backdrop-blur-md fixed w-full z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <span class="text-xl font-bold">FUT Builder</span>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
+                        SquadBuilderPro
+                    </span>
                 </div>
                 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="hover:text-blue-200">Accueil</a>
-                    <a href="builder.html" class="hover:text-blue-200">Builder</a>
-                    <a href="formations.html" class="hover:text-blue-200">Formations</a>
-                    <a href="saved.html" class="hover:text-blue-200">Équipes Sauvegardées</a>
+                    <a href="#all-players" class="hover:text-blue-400 transition">All Players</a>
+                    <a href="#start-building" class="hover:text-blue-400 transition">Start Building</a>
+                    <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -33,86 +73,135 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Mobile Menu -->
-            <div class="md:hidden hidden mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Accueil</a>
-                    <a href="builder.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Builder</a>
-                    <a href="formations.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Formations</a>
-                    <a href="saved.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Équipes Sauvegardées</a>
-                </div>
-            </div>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <!-- Main Content -->
+    <main class="flex-grow pt-16">
         <!-- Hero Section -->
-        <section class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-blue-800 mb-4">Créez Votre Équipe Ultimate</h1>
-            <p class="text-lg text-gray-600">Construisez et gérez votre équipe de rêve avec notre FUT Builder</p>
+        <section class="h-screen flex items-center justify-center text-center">
+            <div class="container mx-auto px-4">
+                <h1 class="text-6xl font-bold mb-6">Build Your Dream Team</h1>
+                <p class="text-xl mb-8">Create, customize, and dominate with SquadBuilderPro</p>
+                <a href="#start-building" class="gradient-button px-8 py-3 rounded-lg inline-block text-lg font-semibold">
+                    Get Started
+                </a>
+            </div>
         </section>
 
-        <!-- Features Grid -->
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
-            <!-- Feature 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold text-blue-800 mb-2">Builder Tactique</h3>
-                <p class="text-gray-600">Créez votre équipe avec différentes formations tactiques</p>
+        <!-- Best Players Section -->
+        <section id="all-players" class="py-20 bg-black/50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12">Best Players</h2>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Player Cards with Hover Animation -->
+                    <div class="player-card bg-gradient-to-br from-blue-900/80 to-blue-800/80 rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/300/400" alt="Player 1" class="w-full h-48 object-cover"/>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Messi</h3>
+                            <p class="text-blue-300">93 Rating</p>
+                        </div>
+                    </div>
+                    <div class="player-card bg-gradient-to-br from-blue-900/80 to-blue-800/80 rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/300/400" alt="Player 2" class="w-full h-48 object-cover"/>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Ronaldo</h3>
+                            <p class="text-blue-300">92 Rating</p>
+                        </div>
+                    </div>
+                    <div class="player-card bg-gradient-to-br from-blue-900/80 to-blue-800/80 rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/300/400" alt="Player 3" class="w-full h-48 object-cover"/>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Mbappé</h3>
+                            <p class="text-blue-300">91 Rating</p>
+                        </div>
+                    </div>
+                    <div class="player-card bg-gradient-to-br from-blue-900/80 to-blue-800/80 rounded-lg overflow-hidden">
+                        <img src="/api/placeholder/300/400" alt="Player 4" class="w-full h-48 object-cover"/>
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Haaland</h3>
+                            <p class="text-blue-300">90 Rating</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Feature 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold text-blue-800 mb-2">Gestion de Chimie</h3>
-                <p class="text-gray-600">Optimisez la chimie entre vos joueurs</p>
+        </section>
+
+        <!-- Start Building Section -->
+        <section id="start-building" class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-8">Start Building Your Squad</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Choose from multiple formations, manage chemistry, and create your ultimate team with our advanced builder tool.</p>
+                <a href="builder.html" class="gradient-button px-8 py-3 rounded-lg inline-block text-lg font-semibold">
+                    Launch Builder
+                </a>
             </div>
-            <!-- Feature 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold text-blue-800 mb-2">Sauvegarde d'Équipes</h3>
-                <p class="text-gray-600">Enregistrez vos équipes préférées</p>
+        </section>
+
+        <!-- Sponsors Section with Animation -->
+        <div class="py-12 bg-black/50 overflow-hidden">
+            <div class="sponsor-scroll whitespace-nowrap flex">
+                <div class="flex space-x-12 items-center">
+                    <img src="/api/placeholder/150/60" alt="Sponsor 1" class="h-12 object-contain"/>
+                    <img src="/api/placeholder/150/60" alt="Sponsor 2" class="h-12 object-contain"/>
+                    <img src="/api/placeholder/150/60" alt="Sponsor 3" class="h-12 object-contain"/>
+                    <img src="/api/placeholder/150/60" alt="Sponsor 4" class="h-12 object-contain"/>
+                    <img src="/api/placeholder/150/60" alt="Sponsor 5" class="h-12 object-contain"/>
+                </div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <section class="text-center">
-            <a href="builder.html" class="inline-block bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
-                Commencer à Construire
-            </a>
-        </section>
+        <!-- Footer -->
+        <footer class="bg-black/80 pt-12 pb-6">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <!-- Logo & Description -->
+                    <div class="col-span-2">
+                        <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
+                            SquadBuilderPro
+                        </h3>
+                        <p class="text-gray-400 mb-4">
+                            Create your ultimate team with our advanced squad builder. Choose from multiple formations, manage chemistry, and dominate the field.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">All Players</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Builder</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+                    <p>&copy; 2024 SquadBuilderPro. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Column 1 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">FUT Builder</h4>
-                    <p class="text-gray-400">Créez et gérez vos équipes facilement</p>
-                </div>
-                <!-- Column 2 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Liens Rapides</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white">Accueil</a></li>
-                        <li><a href="builder.html" class="text-gray-400 hover:text-white">Builder</a></li>
-                        <li><a href="formations.html" class="text-gray-400 hover:text-white">Formations</a></li>
-                    </ul>
-                </div>
-                <!-- Column 3 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
-                    <p class="text-gray-400">Pour toute question ou suggestion</p>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                <p class="text-gray-400">&copy; 2024 FUT Builder. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript -->
     <script>
+        // Mobile menu toggle
         const mobileMenuButton = document.querySelector('.mobile-menu-button');
         const mobileMenu = document.querySelector('.mobile-menu');
 
