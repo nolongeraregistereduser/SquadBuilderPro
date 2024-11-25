@@ -291,17 +291,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem; /* Reduced padding */
     background-color: #1a1a1a;
 }
 
-.logo-img {
-    width: auto; /* Adjust this according to your logo size */
-    height: 70px;
-    object-fit: contain;
-    margin-right: 10px; /* Space between logo and text */
+.logo-text {
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: bold; /* Make the font bold */
+    color: #3b82f6; /* Change the color to your preference */
+    font-family: 'Arial', sans-serif; /* Use a nice font */
+    text-transform: uppercase; /* Transform text to uppercase if desired */
+    letter-spacing: 1px; /* Add some spacing between letters */
 }
-
 .nav-links {
     display: flex;
     gap: 2rem;
