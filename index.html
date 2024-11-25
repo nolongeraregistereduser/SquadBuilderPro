@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUT Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="text-xl font-bold">FUT Builder</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="hover:text-blue-200">Accueil</a>
+                    <a href="builder.html" class="hover:text-blue-200">Builder</a>
+                    <a href="formations.html" class="hover:text-blue-200">Formations</a>
+                    <a href="saved.html" class="hover:text-blue-200">Équipes Sauvegardées</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Accueil</a>
+                    <a href="builder.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Builder</a>
+                    <a href="formations.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Formations</a>
+                    <a href="saved.html" class="block px-3 py-2 hover:bg-blue-700 rounded">Équipes Sauvegardées</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-800 mb-4">Créez Votre Équipe Ultimate</h1>
+            <p class="text-lg text-gray-600">Construisez et gérez votre équipe de rêve avec notre FUT Builder</p>
+        </section>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Feature 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-800 mb-2">Builder Tactique</h3>
+                <p class="text-gray-600">Créez votre équipe avec différentes formations tactiques</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-800 mb-2">Gestion de Chimie</h3>
+                <p class="text-gray-600">Optimisez la chimie entre vos joueurs</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-blue-800 mb-2">Sauvegarde d'Équipes</h3>
+                <p class="text-gray-600">Enregistrez vos équipes préférées</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="text-center">
+            <a href="builder.html" class="inline-block bg-blue-800 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                Commencer à Construire
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Column 1 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">FUT Builder</h4>
+                    <p class="text-gray-400">Créez et gérez vos équipes facilement</p>
+                </div>
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens Rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Accueil</a></li>
+                        <li><a href="builder.html" class="text-gray-400 hover:text-white">Builder</a></li>
+                        <li><a href="formations.html" class="text-gray-400 hover:text-white">Formations</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-400">Pour toute question ou suggestion</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2024 FUT Builder. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
