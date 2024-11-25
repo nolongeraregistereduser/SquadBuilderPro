@@ -26,88 +26,6 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation Styles */
-nav {
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    z-index: 50;
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 64px;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    background: linear-gradient(to right, #3b82f6, #1d4ed8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-right: 48px;
-}
-
-.nav-links {
-    display: none;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    margin-right: 32px;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background: #3b82f6;
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.gradient-button {
-    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.gradient-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
-}
-
-.mobile-menu-button {
-    display: block;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
 
 /* Hero Section Styles */
 .hero {
@@ -365,3 +283,41 @@ nav {
     }
 }
 
+ /* NAV BAR STYLING */
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #cccccc;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
