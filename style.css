@@ -286,6 +286,7 @@ body {
  /* NAV BAR STYLING */
 
 
+/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -295,9 +296,10 @@ body {
 }
 
 .logo-img {
-    width: 40px;
-    height: 40px;
+    width: auto; /* Adjust this according to your logo size */
+    height: 70px;
     object-fit: contain;
+    margin-right: 10px; /* Space between logo and text */
 }
 
 .nav-links {
@@ -316,8 +318,40 @@ body {
     color: #cccccc;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
+/* Button Styles */
+.gradient-button {
+    background: linear-gradient(to right, #3b82f6, #1d4ed8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.gradient-button:hover {
+    background: linear-gradient(to right, #1d4ed8, #3b82f6);
+}
+
+/* Margin between card animation and button */
+.view-all {
+    text-align: center;
+    margin-top: 60px; /* Adjust this value to control the space */
+}
+
+/* Add margin to the carousel */
+.carousel {
+    margin-top: 40px; /* Space above the carousel */
+}
+
+
+/* Adjust card animation */
+
+.carousel {
+    margin-top: 40px; /* Space above the carousel */
+}
+
+.view-all {
+    margin-top: 60px; /* Space between the carousel and the button */
 }
