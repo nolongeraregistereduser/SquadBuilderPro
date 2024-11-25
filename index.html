@@ -4,278 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SquadBuilderPro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .blur-background {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1607627000458-210e8d2bdb1d?q=80&w=2049&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            backdrop-filter: blur(5px);
-        }
-
-        .gradient-button {
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            transition: all 0.3s ease;
-        }
-
-        .gradient-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
-        }
-
-        .carousel {
-            position: relative;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-        }
-
-        .carousel-container {
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate 20s infinite linear;
-            height: 300px;
-        }
-
-        .carousel-container:hover {
-            animation-play-state: paused;
-        }
-
-        .player-card {
-            position: absolute;
-            width: 200px;
-            height: 300px;
-            background: linear-gradient(145deg, #1e40af, #1d4ed8);
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            transform-origin: center;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .player-card:hover {
-            transform: scale(1.1) translateZ(50px);
-        }
-
-        @keyframes rotate {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: #3b82f6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: #3b82f6;
-            transform: translateX(5px);
-        }
-
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            color: #3b82f6;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col blur-background text-white">
-    <!-- Navigation améliorée -->
-    <nav class="bg-black/50 backdrop-blur-md fixed w-full z-50 border-b border-blue-900/30">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-12">
-                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
-                        SquadBuilderPro
-                    </span>
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#home" class="nav-link hover:text-blue-400">Home</a>
-                        <a href="#all-players" class="nav-link hover:text-blue-400">Players</a>
-                        <a href="#teams" class="nav-link hover:text-blue-400">Teams</a>
-                        <a href="#builder" class="nav-link hover:text-blue-400">Builder</a>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <span class="logo">SquadBuilderPro</span>
+                    <div class="nav-links">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#all-players" class="nav-link">Players</a>
+                        <a href="#teams" class="nav-link">Teams</a>
+                        <a href="#builder" class="nav-link">Builder</a>
                     </div>
                 </div>
-                
-                <div class="flex items-center space-x-4">
-                    <button class="gradient-button px-4 py-2 rounded-lg">
-                        Sign In
-                    </button>
-                    <button class="md:hidden">
-                        <i class="fas fa-bars text-xl"></i>
+                <div class="nav-right">
+                    <button class="gradient-button">Sign In</button>
+                    <button class="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow pt-16">
-        <!-- Hero Section -->
-        <section class="h-[60vh] flex items-center justify-center text-center">
-            <div class="container mx-auto px-4">
-                <h1 class="text-6xl font-bold mb-6">Build Your Dream Team</h1>
-                <p class="text-xl mb-8">Create, customize, and dominate with SquadBuilderPro</p>
-                <a href="#start-building" class="gradient-button px-8 py-3 rounded-lg inline-block text-lg font-semibold">
-                    Get Started
-                </a>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Build Your Dream Team</h1>
+                <p>Create, customize, and dominate with SquadBuilderPro</p>
+                <a href="#start-building" class="gradient-button">Get Started</a>
             </div>
         </section>
 
-        <!-- Best Players Section avec Carousel -->
-        <section id="all-players" class="py-20 bg-black/50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12">Best Players</h2>
+        <section id="all-players" class="players">
+            <div class="container">
+                <h2>Best Players</h2>
                 <div class="carousel">
                     <div class="carousel-container">
                         <div class="player-card" style="transform: rotateY(0deg) translateZ(300px)">
-                            <img src="/api/placeholder/150/150" alt="Messi" class="w-32 h-32 rounded-full object-cover"/>
-                            <h3 class="text-xl font-bold">Messi</h3>
-                            <div class="text-blue-300">93 Rating</div>
+                            <img src="/api/placeholder/150/150" alt="Messi" />
+                            <h3>Messi</h3>
+                            <div class="rating">93 Rating</div>
                         </div>
                         <div class="player-card" style="transform: rotateY(72deg) translateZ(300px)">
-                            <img src="/api/placeholder/150/150" alt="Ronaldo" class="w-32 h-32 rounded-full object-cover"/>
-                            <h3 class="text-xl font-bold">Ronaldo</h3>
-                            <div class="text-blue-300">92 Rating</div>
+                            <img src="/api/placeholder/150/150" alt="Ronaldo" />
+                            <h3>Ronaldo</h3>
+                            <div class="rating">92 Rating</div>
                         </div>
                         <div class="player-card" style="transform: rotateY(144deg) translateZ(300px)">
-                            <img src="/api/placeholder/150/150" alt="Mbappé" class="w-32 h-32 rounded-full object-cover"/>
-                            <h3 class="text-xl font-bold">Mbappé</h3>
-                            <div class="text-blue-300">91 Rating</div>
+                            <img src="/api/placeholder/150/150" alt="Mbappé" />
+                            <h3>Mbappé</h3>
+                            <div class="rating">91 Rating</div>
                         </div>
                         <div class="player-card" style="transform: rotateY(216deg) translateZ(300px)">
-                            <img src="/api/placeholder/150/150" alt="Haaland" class="w-32 h-32 rounded-full object-cover"/>
-                            <h3 class="text-xl font-bold">Haaland</h3>
-                            <div class="text-blue-300">90 Rating</div>
+                            <img src="/api/placeholder/150/150" alt="Haaland" />
+                            <h3>Haaland</h3>
+                            <div class="rating">90 Rating</div>
                         </div>
                         <div class="player-card" style="transform: rotateY(288deg) translateZ(300px)">
-                            <img src="/api/placeholder/150/150" alt="De Bruyne" class="w-32 h-32 rounded-full object-cover"/>
-                            <h3 class="text-xl font-bold">De Bruyne</h3>
-                            <div class="text-blue-300">89 Rating</div>
+                            <img src="/api/placeholder/150/150" alt="De Bruyne" />
+                            <h3>De Bruyne</h3>
+                            <div class="rating">89 Rating</div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Bouton View All Players -->
-                <div class="text-center mt-12">
-                    <a href="#" class="gradient-button px-8 py-3 rounded-lg inline-flex items-center space-x-2 group">
+                <div class="view-all">
+                    <a href="#" class="gradient-button">
                         <span>View All Players</span>
-                        <i class="fas fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </section>
-
-
     </main>
 
-    <!-- Footer amélioré -->
-    <footer class="bg-black/80 pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <!-- Logo & About -->
-                <div class="col-span-2">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <i class="fas fa-futbol text-blue-500 text-2xl"></i>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
-                            SquadBuilderPro
-                        </span>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-futbol"></i>
+                        <span>SquadBuilderPro</span>
                     </div>
-                    <p class="text-gray-400 mb-6">
-                        SquadBuilderPro est votre outil ultime pour créer et gérer des équipes de football. 
-                        Explorez notre base de données complète de joueurs et créez votre équipe de rêve.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="social-icon text-gray-400 hover:text-blue-500">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="social-icon text-gray-400 hover:text-blue-500">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="social-icon text-gray-400 hover:text-blue-500">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="social-icon text-gray-400 hover:text-blue-500">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
+                    <p>SquadBuilderPro est votre outil ultime pour créer et gérer des équipes de football. 
+                       Explorez notre base de données complète de joueurs et créez votre équipe de rêve.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="footer-link text-gray-400 hover:text-blue-500 flex items-center">
-                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
-                        </a></li>
-                        <li><a href="#" class="footer-link text-gray-400 hover:text-blue-500 flex items-center">
-                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Players
-                        </a></li>
-                        <li><a href="#" class="footer-link text-gray-400 hover:text-blue-500 flex items-center">
-                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Builder
-                        </a></li>
-                        <li><a href="#" class="footer-link text-gray-400 hover:text-blue-500 flex items-center">
-                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Teams
-                        </a></li>
-                        <li><a href="#" class="footer-link text-gray-400 hover:text-blue-500 flex items-center">
-                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
-                        </a></li>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i>Home</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i>Players</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i>Builder</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i>Teams</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right"></i>Contact</a></li>
                     </ul>
                 </div>
-
-                <!-- Contact -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-envelope mr-3 text-blue-500"></i>
-                            contact@squadbuilder.pro
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-phone mr-3 text-blue-500"></i>
-                            +1 234 567 890
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-map-marker-alt mr-3 text-blue-500"></i>
-                            123 Football Street
-                        </li>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i>contact@squadbuilder.pro</li>
+                        <li><i class="fas fa-phone"></i>+1 234 567 890</li>
+                        <li><i class="fas fa-map-marker-alt"></i>123 Football Street</li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </footer>
 </body>
 </html>
+
