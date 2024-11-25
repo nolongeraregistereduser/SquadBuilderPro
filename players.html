@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIFA Cards</title>
+    <title>Batal FIFA Motahawira</title>
     <style>
         * {
             margin: 0;
@@ -44,29 +44,16 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            display: flex;
-            gap: 5px;
-            align-items: baseline;
-        }
-
-        .rating {
             font-size: 2.5rem;
             font-weight: bold;
             color: #000;
         }
 
-        .position {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #000;
-            margin-left: 5px;
-        }
-
         .player-image {
             position: absolute;
-            top: 50px;
+            top: 45%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             width: 150px;
             height: 150px;
             object-fit: contain;
@@ -74,58 +61,38 @@
 
         .player-name {
             position: absolute;
-            bottom: 140px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 1.3rem;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
             font-weight: bold;
             color: #000;
-            padding: 0 10px;
         }
 
-        .badges {
-            position: absolute;
-            bottom: 100px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 0 10px;
-        }
-
-        .nation-flag, .club-logo {
-            height: 25px;
-            object-fit: contain;
-        }
-
-        .stats-grid {
+        .stats {
             position: absolute;
             bottom: 20px;
-            left: 0;
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            padding: 0 20px;
-            gap: 8px 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            color: #000;
+            font-weight: bold;
         }
 
         .stat {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            color: #000;
-            font-weight: bold;
-            font-size: 0.9rem;
         }
 
         .stat-label {
+            font-size: 0.9rem;
             text-transform: uppercase;
         }
 
         .stat-value {
-            font-weight: bolder;
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -138,17 +105,10 @@
         function createPlayerCard(player) {
             return `
                 <div class="card">
-                    <div class="top-info">
-                        <span class="rating">${player.rating}</span>
-                        <span class="position">${player.position}</span>
-                    </div>
+                    <div class="top-info">${player.rating}</div>
                     <img src="${player.photo}" alt="${player.name}" class="player-image">
                     <div class="player-name">${player.name}</div>
-                    <div class="badges">
-                        <img src="${player.flag}" alt="${player.nationality}" class="nation-flag">
-                        <img src="${player.logo}" alt="${player.club}" class="club-logo">
-                    </div>
-                    <div class="stats-grid">
+                    <div class="stats">
                         <div class="stat">
                             <span class="stat-label">pac</span>
                             <span class="stat-value">${player.pace}</span>
