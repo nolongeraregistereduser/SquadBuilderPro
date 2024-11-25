@@ -42,11 +42,19 @@
 
         .top-info {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 2.5rem;
+            top: 70px;
+            left: 50px;
+            font-size: 2rem;
             font-weight: bold;
-            color: #000;
+            color: #000000;
+        }
+
+        .stat-position{
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: bold;
+            top: 110px;
+            left: 52px;
         }
 
         .player-image {
@@ -71,11 +79,11 @@
 
         .stats {
             position: absolute;
-            bottom: 20px;
+            bottom: 70px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 7px;
             color: #000;
             font-weight: bold;
         }
@@ -92,10 +100,12 @@
         }
 
         .stat-value {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
     </style>
 </head>
+
+
 <body>
     <div class="container" id="cardsContainer">
         <!-- Cards will be inserted here -->
@@ -106,6 +116,7 @@
             return `
                 <div class="card">
                     <div class="top-info">${player.rating}</div>
+                    <div class="stat-position">${player.position}</div>
                     <img src="${player.photo}" alt="${player.name}" class="player-image">
                     <div class="player-name">${player.name}</div>
                     <div class="stats">
