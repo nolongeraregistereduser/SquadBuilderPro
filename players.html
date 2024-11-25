@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batal FIFA Motahawira</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: auto;
+            background-image: url('src/assets/img/badge_gold.webp');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .top-info {
+            position: absolute;
+            top: 70px;
+            left: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .stat-position{
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: bold;
+            top: 110px;
+            left: 52px;
+        }
+
+        .player-image {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .player-name {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .stats {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 7px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container" id="cardsContainer">
+        <!-- Cards will be inserted here -->
+    </div>
+
+    <script>
+        function createPlayerCard(player) {
+            return `
+                <div class="card">
+                    <div class="top-info">${player.rating}</div>
+                    <div class="stat-position">${player.position}</div>
+                    <img src="${player.photo}" alt="${player.name}" class="player-image">
+                    <div class="player-name">${player.name}</div>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">pac</span>
+                            <span class="stat-value">${player.pace}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">sho</span>
+                            <span class="stat-value">${player.shooting}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">pas</span>
+                            <span class="stat-value">${player.passing}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">dri</span>
+                            <span class="stat-value">${player.dribbling}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">def</span>
+                            <span class="stat-value">${player.defending}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">phy</span>
+                            <span class="stat-value">${player.physical}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Fetch and display players
+        fetch('players.json')
+            .then(response => response.json())
+            .then(data => {
+                const cardsContainer = document.getElementById('cardsContainer');
+                data.players.forEach(player => {
+                    cardsContainer.innerHTML += createPlayerCard(player);
+                });
+            })
+            .catch(error => console.error('Error loading players:', error));
+    </script>
+</body>
+</html>

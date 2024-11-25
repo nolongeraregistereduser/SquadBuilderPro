@@ -329,7 +329,19 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
+    padding: auto;
+    margin-top: 50px;
 }
+
+
+#title-section-top-players{
+    font-size: 2rem;
+    font-size: bold;
+    margin-bottom: 50px;
+    position: relative;
+    top: -50px;
+}
+
 
 .gradient-button:hover {
     background: linear-gradient(to right, #1d4ed8, #3b82f6);
