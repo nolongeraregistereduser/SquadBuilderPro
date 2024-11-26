@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Tactics and Formations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .pitch {
+      position: relative;
+      width: 892px;
+      height: 725px;
+      background-image: url('src/assets/img/stadium_background.webp');
+      background-size: cover;
+      background-position: center;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+
+    .player {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #2196F3;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .formation-select {
+      margin-bottom: 20px;
+    }
+
+    .formation-select label {
+      margin-right: 10px;
+    }
+
+    .formation-select select {
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pitch" id="pitch">
+      <!-- Player positions will be dynamically added here -->
+    </div>
+    <div class="formation-select">
+      <label for="formation">Formation:</label>
+      <select id="formation">
+        <!-- Options will be dynamically added here -->
+      </select>
+    </div>
+  </div>
+
+  <script>
+
+
+const formationsData = [
+    {
+      name: '4-4-2',
+      positions: [
+        { x: 430, y: 570, position: 'GK' },
+        { x: 320, y: 435, position: 'CB' },
+        { x: 540, y: 435, position: 'CB' },
+        { x: 750, y: 420, position: 'RB' },
+        { x: 90, y: 430, position: 'LB' },
+        { x: 310, y: 210, position: 'CM' },
+        { x: 560, y: 210, position: 'CM' },
+        { x: 750, y: 200, position: 'RM' },
+        { x: 150, y: 205, position: 'LM' },
+        { x: 330, y: 70, position: 'ST' },
+        { x: 550, y: 70, position: 'ST' }
+      ]
+    }, 
+    {
+      name: '4-3-3',
+      positions: [
+        { x: 0, y: 0, position: 'GK' },
+        { x: 264, y: 290, position: 'CB' },
+        { x: 626, y: 290, position: 'CB' },
+        { x: 805, y: 145, position: 'RB' },
+        { x: 89, y: 580, position: 'LB' },
+        { x: 264, y: 435, position: 'CM' },
+        { x: 446, y: 435, position: 'CM' },
+        { x: 626, y: 435, position: 'CM' },
+        { x: 264, y: 580, position: 'LW' },
+        { x: 446, y: 580, position: 'ST' },
+        { x: 626, y: 580, position: 'RW' }
+      ]
+    }
+  ];
+
+    const pitchElement = document.getElementById('pitch');
+    const formationSelect = document.getElementById('formation');
+
+    function renderPlayerPositions(formation) {
+      pitchElement.innerHTML = '';
+      formation.positions.forEach(pos => {
+        const playerElement = document.createElement('div');
+        playerElement.className = 'player';
+        playerElement.style.left = `${pos.x}px`;
+        playerElement.style.top = `${pos.y}px`;
+        playerElement.textContent = pos.position;
+        pitchElement.appendChild(playerElement);
+      });
+    }
+
+    function renderFormationOptions() {
+      formationsData.forEach(formation => {
+        const option = document.createElement('option');
+        option.value = formation.name;
+        option.textContent = formation.name;
+        formationSelect.appendChild(option);
+      });
+    }
+
+    formationSelect.addEventListener('change', () => {
+      const selectedFormation = formationsData.find(f => f.name === formationSelect.value);
+      renderPlayerPositions(selectedFormation);
+    });
+
+    renderFormationOptions();
+    renderPlayerPositions(formationsData[0]);
+  </script>
+</body>
+</html>
