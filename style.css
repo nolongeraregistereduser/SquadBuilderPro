@@ -368,3 +368,227 @@ body {
 .view-all {
     margin-top: 60px; /* Space between the carousel and the button */
 }
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 300px;
+    height: 400px;
+    background-image: url('src/assets/img/badge_gold.webp');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.top-info {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.stat-position {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: bold;
+    top: 110px;
+    left: 52px;
+}
+
+.player-image {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.player-name {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    width: 90%;
+}
+
+.stats {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    color: #000;
+    font-weight: bold;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 1rem;
+}
+
+/* For better scrolling on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .container {
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+
+    .card {
+        scroll-snap-align: start;
+    }
+}
+
+
+
+/* CSS for horizontal card layout using Grid */
+.player-cards-container {
+    display: grid;                          /* Enable grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive columns */
+    gap: 20px;                             /* Space between cards */
+    padding: 20px;                         /* Optional padding around the container */
+}
+
+.card {
+    height: 400px;                         /* Fixed height for cards */
+    background-image: url('src/assets/img/badge_gold.webp');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+
+/* Centering the cards and adding styles for the section */
+#featured-players {
+    text-align: center; /* Center-align text inside the section */
+    padding: 40px 20px; /* Add padding to the section */
+}
+
+/* Title styles */
+.section-title {
+    font-size: 2rem; /* Adjust font size for the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #ffffff; /* Title color */
+}
+
+/* Container for player cards */
+.player-cards-container {
+    display: flex;                  /* Enable flexbox */
+    flex-wrap: wrap;               /* Allow wrapping of cards */
+    justify-content: center;        /* Center the cards horizontally */
+    gap: 20px;                     /* Space between cards */
+    padding: 20px;                 /* Optional padding around the container */
+}
+
+/* Button styles */
+.view-all-container {
+    margin-top: 30px; /* Space above the button */
+}
+
+.view-all-button {
+    background: linear-gradient(to right, #3b82f6, #1d4ed8); /* Gradient background */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    transition: background 0.3s ease; /* Transition effect */
+}
+
+.view-all-button:hover {
+    background: linear-gradient(to right, #1d4ed8, #3b82f6); /* Change gradient on hover */
+}
+
+
+/* Football Formation Creator Section Styles */
+#formation-creator {
+    text-align: center; /* Center-align text inside the section */
+    padding: 60px 20px; /* Increased padding for a larger section */
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background color for contrast */
+    color: white; /* Text color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+    margin: 40px 0; /* Margin above and below the section */
+}
+
+/* Formation Title Styles */
+.formation-title {
+    font-size: 2.5rem; /* Increased font size for the title */
+    margin-bottom: 30px; /* Space below the title */
+    font-weight: bold; /* Make the title bold */
+    text-transform: uppercase; /* Transform text to uppercase */
+}
+
+/* Button Styles for Formation */
+.formation-button-container {
+    margin-top: 20px; /* Space above the button */
+}
+
+.formation-button {
+    background: linear-gradient(to right, #3b82f6, #1d4ed8); /* Gradient background */
+    color: white; /* Text color */
+    padding: 15px 30px; /* Increased padding for the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Increased font size */
+    transition: background 0.3s ease, transform 0.3s ease; /* Transition effect */
+}
+
+.formation-button:hover {
+    background: linear-gradient(to right, #1d4ed8, #3b82f6); /* Change gradient on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+
+
+
