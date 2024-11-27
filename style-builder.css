@@ -324,6 +324,7 @@ body {
 /* Popup form content */
 .popup-content {
   position: relative;
+  max-width: auto;
 }
 
 /* Form inside the popup */
@@ -332,6 +333,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #ffffff;
 }
 
 #playerForm label {
@@ -366,27 +368,30 @@ body {
 
 /* show elements in pop up inline */
 
-/* Ensure the form is using Flexbox to arrange elements */
-.popup-form form {
-  display: flex;
-  flex-direction: column; /* Stack the form elements vertically */
-  gap: 10px; /* Adds space between rows of form elements */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
 }
 
-/* Style each form row to align label and input on the same line */
-.popup-form .form-row {
-  display: flex;
-  align-items: center; /* Vertically align items in the center */
-  gap: 10px; /* Adds space between the label and input */
+.popup-content {
+    background-color: #ffffff;
+    width: 100%;
 }
 
-.popup-form label {
-  width: 150px; /* Set width for labels */
-  text-align: right; /* Align label text to the right */
+.close {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.popup-form input {
-  flex-grow: 1; /* Let the input take up the remaining space */
-  padding: 5px; /* Add some padding inside the input for spacing */
-  width: 100%; /* Ensure the input takes up the available width */
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
