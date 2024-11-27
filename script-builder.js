@@ -85,13 +85,21 @@ function renderFormationOptions() {
   });
 }
 
-function updatePlayersList(formation) {
-  playersListElement.innerHTML = '';
-  formation.positions.forEach(pos => {
-    const li = document.createElement('li');
-    li.textContent = `${pos.position}: Player Name`;
-    playersListElement.appendChild(li);
-  });
+function updatePlayersList() {
+  // Fetch players data
+  fetch('players.json')
+    .then(response => response.json())
+    .then(data => {
+      // Clear the existing content
+      playersListElement.innerHTML = '';
+      
+      // Create and append player cards for each player
+      data.players.forEach(player => {
+        const playerCard = createPlayerCard(player);
+        playersListElement.innerHTML += playerCard;
+      });
+    })
+    .catch(error => console.error('Error loading players:', error));
 }
 
 function updateTeamInfo() {
@@ -119,3 +127,93 @@ renderFormationOptions();
 renderPlayerPositions(formationsData[0]);
 updatePlayersList(formationsData[0]);
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+// fonction pour creer les cartes de joueur et les affichés dans la section All Players
+
+function createPlayerCard(player) {
+
+
+  if(player.position=='GK')
+{
+  return `
+      <div class="card">
+          <div class="top-info">${player.rating}</div>
+          <div class="stat-position">${player.position}</div>
+          <img src="${player.photo}" alt="${player.name}" class="player-image">
+          <div class="player-name">${player.name}</div>
+          <div class="stats">
+              <div class="stat">
+                  <span class="stat-label">div</span>
+                  <span class="stat-value">${player.diving}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">han</span>
+                  <span class="stat-value">${player.handling}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">kic</span>
+                  <span class="stat-value">${player.kicking}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">ref</span>
+                  <span class="stat-value">${player.reflexes}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">spd</span>
+                  <span class="stat-value">${player.speed}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">pos</span>
+                  <span class="stat-value">${player.positioning}</span>
+              </div>
+          </div>
+      </div>
+  `;
+}
+else {
+  return `
+      <div class="card">
+          <div class="top-info">${player.rating}</div>
+          <div class="stat-position">${player.position}</div>
+          <img src="${player.photo}" alt="${player.name}" class="player-image">
+          <div class="player-name">${player.name}</div>
+          <div class="stats">
+              <div class="stat">
+                  <span class="stat-label">pac</span>
+                  <span class="stat-value">${player.pace}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">sho</span>
+                  <span class="stat-value">${player.shooting}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">pas</span>
+                  <span class="stat-value">${player.passing}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">dri</span>
+                  <span class="stat-value">${player.dribbling}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">def</span>
+                  <span class="stat-value">${player.defending}</span>
+              </div>
+              <div class="stat">
+                  <span class="stat-label">phy</span>
+                  <span class="stat-value">${player.physical}</span>
+              </div>
+          </div>
+      </div>
+  `;
+}
+}
+
+
+
+>>>>>>> ab92384867edcb77cc10c6e318a8f2a6f827e6c4
