@@ -212,4 +212,64 @@ else {
 }
 
 
+// show popup of adding with form and logic for adding a player
+
+ // Get elements
+ const addButton = document.getElementById('addbutton');
+ const popupForm = document.getElementById('popupForm');
+ const closePopup = document.getElementById('closePopup');
+ const playerForm = document.getElementById('playerForm');
+ const playersList = document.getElementById('playersList');
+
+ // Show the popup form when "Add Player" is clicked
+ addButton.addEventListener('click', () => {
+   popupForm.style.display = 'flex'; // Make the popup visible with flex
+ });
+
+ // Close the popup form when the "X" button is clicked
+ closePopup.addEventListener('click', () => {
+   popupForm.style.display = 'none'; // Hide the popup
+ });
+
+ // Handle form submission
+ playerForm.addEventListener('submit', (event) => {
+   event.preventDefault();
+
+   // Get form values
+   const playerData = {
+     name: document.getElementById('name').value,
+     photo: document.getElementById('photo').value,
+     position: document.getElementById('position').value,
+     nationality: document.getElementById('nationality').value,
+     flag: document.getElementById('flag').value,
+     club: document.getElementById('club').value,
+     logo: document.getElementById('logo').value,
+     rating: document.getElementById('rating').value,
+     diving: document.getElementById('diving').value,
+     handling: document.getElementById('handling').value,
+     kicking: document.getElementById('kicking').value,
+     reflexes: document.getElementById('reflexes').value,
+     speed: document.getElementById('speed').value,
+     positioning: document.getElementById('positioning').value
+   };
+
+   // Add player to player list
+   const playerElement = document.createElement('div');
+   playerElement.classList.add('player');
+   playerElement.innerHTML = `
+     <img src="${playerData.photo}" alt="${playerData.name}" width="50">
+     <h4>${playerData.name} (${playerData.position})</h4>
+     <p>Nationality: ${playerData.nationality}</p>
+     <p>Club: ${playerData.club}</p>
+     <p>Rating: ${playerData.rating}</p>
+   `;
+   playersList.appendChild(playerElement);
+
+   // Close the popup form
+   popupForm.style.display = 'none';
+
+   // Reset form
+   playerForm.reset();
+ });
+
 

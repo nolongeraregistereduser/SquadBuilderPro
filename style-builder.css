@@ -107,6 +107,16 @@ body {
   .player-list li {
     margin-bottom: 5px;
   }
+
+
+  h2, h3 {
+    text-align: center;
+  }
+
+  .team-info {
+    text-align: center;
+    align-items: center;
+  }
   
   @media (max-width: 1200px) {
     .container {
@@ -218,7 +228,7 @@ body {
 
 .player-list {
   width: 100%; /* Width of container */
-  height: 500px; /* Define the height of the visible area */
+  height: 700px; /* Define the height of the visible area */
   overflow-y: auto; /* Enable vertical scrolling */
   background-color: #1c1a1a; /* Optional: Background color */
 
@@ -257,4 +267,126 @@ body {
 .player-list {
   scrollbar-width: thin; /* Thin scrollbar */
   scrollbar-color: #888 #ccc; /* Thumb and track colors (grey) */
+}
+
+#addbutton{
+  background-color: #24ba33;
+}
+
+#editbutton{
+  color: #ffffff;
+  background-color: #496ed3;
+}
+
+#deletebutton{
+  background-color: rgb(255, 0, 0);
+}
+
+#addbutton:hover, #editbutton:hover, #deletebutton:hover {
+  opacity: 0.8;
+}
+
+/* Popup styling */
+.popup-form {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the popup in the left section */
+  
+  width: 500px;  /* Set the width of the form */
+  height: 800px; /* Set the height of the form */
+  
+  background-color: #fff;
+  color: #333;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Scrollable content if necessary */
+}
+
+.left-section {
+  position: relative; /* Make this section the reference point for absolute positioning */
+  /* so i can show the pop up in the left section */
+}
+
+
+/* Close button in popup */
+.close-btn {
+  position: absolute;
+  top: auto;
+  left: auto;
+   font-size: 50px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Popup form content */
+.popup-content {
+  position: relative;
+}
+
+/* Form inside the popup */
+#playerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#playerForm label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  align-items: center;
+}
+
+#playerForm input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#playerForm button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#playerForm button:hover {
+  opacity: 0.8;
+}
+
+
+
+/* show elements in pop up inline */
+
+/* Ensure the form is using Flexbox to arrange elements */
+.popup-form form {
+  display: flex;
+  flex-direction: column; /* Stack the form elements vertically */
+  gap: 10px; /* Adds space between rows of form elements */
+}
+
+/* Style each form row to align label and input on the same line */
+.popup-form .form-row {
+  display: flex;
+  align-items: center; /* Vertically align items in the center */
+  gap: 10px; /* Adds space between the label and input */
+}
+
+.popup-form label {
+  width: 150px; /* Set width for labels */
+  text-align: right; /* Align label text to the right */
+}
+
+.popup-form input {
+  flex-grow: 1; /* Let the input take up the remaining space */
+  padding: 5px; /* Add some padding inside the input for spacing */
+  width: 100%; /* Ensure the input takes up the available width */
 }

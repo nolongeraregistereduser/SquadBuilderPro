@@ -11,21 +11,18 @@
 <body>
     <div class="container">
       <div class="left-section">
-        <h2>Team Information</h2>
-        <div class="team-info">
-          <label for="teamNameInput">Team Name:</label>
-          <input type="text" id="teamNameInput" placeholder="Enter team name">
-          <p>Team Name: <span id="teamName">Your Team</span></p>
-          
-          <label for="managerNameInput">Manager:</label>
-          <input type="text" id="managerNameInput" placeholder="Enter manager name">
-          <p>Manager: <span id="managerName">Your Name</span></p>
-          
-          <button id="updateInfo">Update Information</button>
+        <h2>Team Management</h2>
+        <div class="team-info">          
+          <button id="addbutton">Add Player</button>
+          <button id="editbutton">Edit Player</button>
+          <button id="deletebutton">Delete Player</button>
+
+
         </div>
         <div class="player-list">
           <h3>All players</h3>
           <div id="playersList">
+            <div class="btn" id="updateInfo"></div>
             <!-- Player list will be dynamically added here -->
           </div>
         </div>
@@ -42,6 +39,59 @@
         </div>
       </div>
     </div>
+
+    <!-- Add Player Popup -->
+  <div id="popupForm" class="popup-form">
+    <div class="popup-content">
+      <span id="closePopup" class="close-btn">&times;</span>
+      <h3>Add Player</h3>
+      <form id="playerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="photo">Photo URL:</label>
+        <input type="url" id="photo" name="photo" required>
+
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required>
+
+        <label for="flag">Flag URL:</label>
+        <input type="url" id="flag" name="flag" required>
+
+        <label for="club">Club:</label>
+        <input type="text" id="club" name="club" required>
+
+        <label for="logo">Club Logo URL:</label>
+        <input type="url" id="logo" name="logo" required>
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" required>
+
+        <label for="diving">Diving:</label>
+        <input type="number" id="diving" name="diving" required>
+
+        <label for="handling">Handling:</label>
+        <input type="number" id="handling" name="handling" required>
+
+        <label for="kicking">Kicking:</label>
+        <input type="number" id="kicking" name="kicking" required>
+
+        <label for="reflexes">Reflexes:</label>
+        <input type="number" id="reflexes" name="reflexes" required>
+
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" required>
+
+        <label for="positioning">Positioning:</label>
+        <input type="number" id="positioning" name="positioning" required>
+
+        <button type="submit">Add Player</button>
+      </form>
+    </div>
+  </div>
 
   <script src="script-builder.js"></script>
 </body>
