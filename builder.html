@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Football Tactics and Formations</title>
   <style>
+
 body {
   font-family: Arial, sans-serif;
   background-color: #1a1a1a;
@@ -77,6 +78,32 @@ body {
   margin-bottom: 20px;
 }
 
+.team-info label, .team-info input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.team-info input {
+  width: 100%;
+  padding: 5px;
+  background-color: #3c3c3c;
+  border: 1px solid #4c4c4c;
+  color: #fff;
+}
+
+.team-info button {
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.team-info button:hover {
+  background-color: #1976D2;
+}
+
 .player-list ul {
   list-style-type: none;
   padding: 0;
@@ -103,6 +130,7 @@ body {
     aspect-ratio: 892 / 725;
   }
 }
+
   </style>
 </head>
 <body>
@@ -110,8 +138,15 @@ body {
       <div class="left-section">
         <h2>Team Information</h2>
         <div class="team-info">
+          <label for="teamNameInput">Team Name:</label>
+          <input type="text" id="teamNameInput" placeholder="Enter team name">
           <p>Team Name: <span id="teamName">Your Team</span></p>
+          
+          <label for="managerNameInput">Manager:</label>
+          <input type="text" id="managerNameInput" placeholder="Enter manager name">
           <p>Manager: <span id="managerName">Your Name</span></p>
+          
+          <button id="updateInfo">Update Information</button>
         </div>
         <div class="player-list">
           <h3>Players</h3>
@@ -174,6 +209,11 @@ const formationsData = [
 const pitchElement = document.getElementById('pitch');
 const formationSelect = document.getElementById('formation');
 const playersListElement = document.getElementById('playersList');
+const teamNameInput = document.getElementById('teamNameInput');
+const managerNameInput = document.getElementById('managerNameInput');
+const teamNameDisplay = document.getElementById('teamName');
+const managerNameDisplay = document.getElementById('managerName');
+const updateInfoButton = document.getElementById('updateInfo');
 
 function renderPlayerPositions(formation) {
   pitchElement.innerHTML = '';
@@ -205,11 +245,26 @@ function updatePlayersList(formation) {
   });
 }
 
+function updateTeamInfo() {
+  const teamName = teamNameInput.value.trim();
+  const managerName = managerNameInput.value.trim();
+  
+  if (teamName) {
+    teamNameDisplay.textContent = teamName;
+  }
+  
+  if (managerName) {
+    managerNameDisplay.textContent = managerName;
+  }
+}
+
 formationSelect.addEventListener('change', () => {
   const selectedFormation = formationsData.find(f => f.name === formationSelect.value);
   renderPlayerPositions(selectedFormation);
   updatePlayersList(selectedFormation);
 });
+
+updateInfoButton.addEventListener('click', updateTeamInfo);
 
 renderFormationOptions();
 renderPlayerPositions(formationsData[0]);
