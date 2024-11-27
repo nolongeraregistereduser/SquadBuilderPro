@@ -118,3 +118,5 @@ renderFormationOptions();
 renderPlayerPositions(formationsData[0]);
 updatePlayersList(formationsData[0]);
 
+
+

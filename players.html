@@ -113,6 +113,46 @@
 
     <script>
         function createPlayerCard(player) {
+
+
+            if(player.position=='GK')
+        {
+            return `
+                <div class="card">
+                    <div class="top-info">${player.rating}</div>
+                    <div class="stat-position">${player.position}</div>
+                    <img src="${player.photo}" alt="${player.name}" class="player-image">
+                    <div class="player-name">${player.name}</div>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">div</span>
+                            <span class="stat-value">${player.diving}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">han</span>
+                            <span class="stat-value">${player.handling}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">kic</span>
+                            <span class="stat-value">${player.kicking}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">ref</span>
+                            <span class="stat-value">${player.reflexes}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">spd</span>
+                            <span class="stat-value">${player.speed}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">pos</span>
+                            <span class="stat-value">${player.positioning}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        else {
             return `
                 <div class="card">
                     <div class="top-info">${player.rating}</div>
@@ -148,6 +188,7 @@
                 </div>
             `;
         }
+    }
 
         // Fetch and display players
         fetch('players.json')
