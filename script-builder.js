@@ -1,3 +1,4 @@
+
 const formationsData = [
   {
     name: '4-3-3',
@@ -117,6 +118,4 @@ updateInfoButton.addEventListener('click', updateTeamInfo);
 renderFormationOptions();
 renderPlayerPositions(formationsData[0]);
 updatePlayersList(formationsData[0]);
-
-
 
