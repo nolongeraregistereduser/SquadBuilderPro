@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Tactics and Formations</title>
+   <link rel="stylesheet" href="style-builder.css">
+
+   
+</head>
+<body>
+    <div class="container">
+      <div class="left-section">
+        <h2>Team Information</h2>
+        <div class="team-info">
+          <label for="teamNameInput">Team Name:</label>
+          <input type="text" id="teamNameInput" placeholder="Enter team name">
+          <p>Team Name: <span id="teamName">Your Team</span></p>
+          
+          <label for="managerNameInput">Manager:</label>
+          <input type="text" id="managerNameInput" placeholder="Enter manager name">
+          <p>Manager: <span id="managerName">Your Name</span></p>
+          
+          <button id="updateInfo">Update Information</button>
+        </div>
+        <div class="player-list">
+          <h3>All players</h3>
+          <div id="playersList">
+            <!-- Player list will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+      <div class="right-section">
+        <div class="pitch" id="pitch">
+          <!-- Player positions will be dynamically added here -->
+        </div>
+        <div class="formation-select">
+          <label for="formation">Formation:</label>
+          <select id="formation">
+            <!-- Options will be dynamically added here -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+  <script src="script-builder.js"></script>
+</body>
+</html>
