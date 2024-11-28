@@ -260,7 +260,7 @@ else {
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = playerCardHTML.trim();
   const playerCardElement = tempDiv.firstChild;
-  playersList.appendChild(playerCardElement);
+  playersList.prepend(playerCardElement);
 
   // Masquer le formulaire pop-up
   popupForm.style.display = 'none';
