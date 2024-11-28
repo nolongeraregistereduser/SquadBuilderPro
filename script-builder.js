@@ -41,6 +41,7 @@ const managerNameInput = document.getElementById('managerNameInput');
 const teamNameDisplay = document.getElementById('teamName');
 const managerNameDisplay = document.getElementById('managerName');
 const updateInfoButton = document.getElementById('updateInfo');
+const positionSelect = document.getElementById('position');
 
 function renderPlayerPositions(formation) {
   const currentPlayers = Array.from(pitchElement.querySelectorAll('.player'));
@@ -130,6 +131,18 @@ updateInfoButton.addEventListener('click', updateTeamInfo);
 renderFormationOptions();
 renderPlayerPositions(formationsData[0]);
 updatePlayersList(formationsData[0]);
+
+positionSelect.addEventListener('change', function() {
+  const isGoalkeeper = this.value === 'GK';
+  
+  // Mettre à jour les labels
+  document.querySelector('label[for="diving"]').textContent = isGoalkeeper ? 'Diving:' : 'Pace:';
+  document.querySelector('label[for="handling"]').textContent = isGoalkeeper ? 'Handling:' : 'Shooting:';
+  document.querySelector('label[for="kicking"]').textContent = isGoalkeeper ? 'Kicking:' : 'Passing:';
+  document.querySelector('label[for="reflexes"]').textContent = isGoalkeeper ? 'Reflexes:' : 'Dribbling:';
+  document.querySelector('label[for="speed"]').textContent = isGoalkeeper ? 'Speed:' : 'Defending:';
+  document.querySelector('label[for="positioning"]').textContent = isGoalkeeper ? 'Positioning:' : 'Physical:';
+});
 
 
 
@@ -245,22 +258,35 @@ function createPlayerCard(player) {
   event.preventDefault();
 
   // Récupérer les valeurs du formulaire
+  const position = document.getElementById('position').value;
+  
   const playerData = {
     name: document.getElementById('name').value,
     photo: document.getElementById('photo').value,
-    position: document.getElementById('position').value,
+    position: position,
     nationality: document.getElementById('nationality').value,
-    //flag: document.getElementById('flag').value,
     club: document.getElementById('club').value,
     logo: document.getElementById('logo').value,
     rating: document.getElementById('rating').value,
-    diving: document.getElementById('diving').value || 'N/A',
-    handling: document.getElementById('handling').value || 'N/A',
-    kicking: document.getElementById('kicking').value || 'N/A',
-    reflexes: document.getElementById('reflexes').value || 'N/A',
-    speed: document.getElementById('speed').value || 'N/A',
-    positioning: document.getElementById('positioning').value || 'N/A'
   };
+
+  // Ajouter les stats selon la position
+  if (position === 'GK') {
+    playerData.diving = document.getElementById('diving').value;
+    playerData.handling = document.getElementById('handling').value;
+    playerData.kicking = document.getElementById('kicking').value;
+    playerData.reflexes = document.getElementById('reflexes').value;
+    playerData.speed = document.getElementById('speed').value;
+    playerData.positioning = document.getElementById('positioning').value;
+  } else {
+    // Stats pour les joueurs de champ
+    playerData.pace = document.getElementById('diving').value; // Réutilisation des champs existants
+    playerData.shooting = document.getElementById('handling').value;
+    playerData.passing = document.getElementById('kicking').value;
+    playerData.dribbling = document.getElementById('reflexes').value;
+    playerData.defending = document.getElementById('speed').value;
+    playerData.physical = document.getElementById('positioning').value;
+  }
 
   // Ajouter la carte au conteneur
   const playerCardHTML = createPlayerCard(playerData);
