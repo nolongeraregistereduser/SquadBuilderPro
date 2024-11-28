@@ -232,44 +232,39 @@ else {
  });
 
  // Handle form submission
+
+ 
  playerForm.addEventListener('submit', (event) => {
-   event.preventDefault();
+  event.preventDefault();
 
-   // Get form values
-   const playerData = {
-     name: document.getElementById('name').value,
-     photo: document.getElementById('photo').value,
-     position: document.getElementById('position').value,
-     nationality: document.getElementById('nationality').value,
-     flag: document.getElementById('flag').value,
-     club: document.getElementById('club').value,
-     logo: document.getElementById('logo').value,
-     rating: document.getElementById('rating').value,
-     diving: document.getElementById('diving').value,
-     handling: document.getElementById('handling').value,
-     kicking: document.getElementById('kicking').value,
-     reflexes: document.getElementById('reflexes').value,
-     speed: document.getElementById('speed').value,
-     positioning: document.getElementById('positioning').value
-   };
+  // Get form values
+  const playerData = {
+    name: document.getElementById('name').value,
+    photo: document.getElementById('photo').value,
+    position: document.getElementById('position').value,
+    nationality: document.getElementById('nationality').value,
+    flag: document.getElementById('flag').value,
+    club: document.getElementById('club').value,
+    logo: document.getElementById('logo').value,
+    rating: document.getElementById('rating').value,
+    diving: document.getElementById('diving').value,
+    handling: document.getElementById('handling').value,
+    kicking: document.getElementById('kicking').value,
+    reflexes: document.getElementById('reflexes').value,
+    speed: document.getElementById('speed').value,
+    positioning: document.getElementById('positioning').value
+  };
 
-   // Add player to player list
-   const playerElement = document.createElement('div');
-   playerElement.classList.add('player');
-   playerElement.innerHTML = `
-     <img src="${playerData.photo}" alt="${playerData.name}" width="50">
-     <h4>${playerData.name} (${playerData.position})</h4>
-     <p>Nationality: ${playerData.nationality}</p>
-     <p>Club: ${playerData.club}</p>
-     <p>Rating: ${playerData.rating}</p>
-   `;
-   playersList.appendChild(playerElement);
+  // Add player to player list
+  const playerElement = createPlayerCard(playerData); // Use playerData as input
+  const playersList = document.getElementById('playersList'); // Ensure playersList is defined
+  playersList.appendChild(playerElement);
 
-   // Close the popup form
-   popupForm.style.display = 'none';
+  // Close the popup form
+  const popupForm = document.querySelector('.popup-form'); // Ensure popupForm is properly selected
+  popupForm.style.display = 'none';
 
-   // Reset form
-   playerForm.reset();
- });
-
+  // Reset form
+  playerForm.reset();
+});
 
