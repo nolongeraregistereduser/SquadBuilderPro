@@ -85,17 +85,22 @@ function renderFormationOptions() {
 }
 
 function updatePlayersList() {
-  // Fetch players data
   fetch('players.json')
     .then(response => response.json())
     .then(data => {
-      // Clear the existing content
       playersListElement.innerHTML = '';
-      
-      // Create and append player cards for each player
       data.players.forEach(player => {
         const playerCard = createPlayerCard(player);
         playersListElement.innerHTML += playerCard;
+      });
+      
+      // Add event listeners to delete buttons after cards are created
+      const deleteButtons = document.querySelectorAll('.btn-delete');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.card');
+          card.remove();
+        });
       });
     })
     .catch(error => console.error('Error loading players:', error));
@@ -214,8 +219,6 @@ function createPlayerCard(player) {
   }
 }
 
-
-
 // show popup of adding with form and logic for adding a player
 
  // Get elements
@@ -271,6 +274,12 @@ function createPlayerCard(player) {
 
   // Réinitialiser le formulaire
   playerForm.reset();
+
+  // Add delete functionality to the new card
+  const deleteButton = playerCardElement.querySelector('.btn-delete');
+  deleteButton.addEventListener('click', function() {
+    this.closest('.card').remove();
+  });
 });
 
 
