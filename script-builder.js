@@ -132,13 +132,9 @@ updatePlayersList(formationsData[0]);
 
 
 // fonction pour creer les cartes de joueur et les affichés dans la section All Players
-
 function createPlayerCard(player) {
-
-
-  if(player.position=='GK')
-{
-  return `
+  if (player.position === 'GK') {
+    return `
       <div class="card">
           <div class="top-info">${player.rating}</div>
           <div class="stat-position">${player.position}</div>
@@ -170,11 +166,14 @@ function createPlayerCard(player) {
                   <span class="stat-value">${player.positioning}</span>
               </div>
           </div>
+          <div class="card-actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete">Delete</button>
+          </div>
       </div>
-  `;
-}
-else {
-  return `
+    `;
+  } else {
+    return `
       <div class="card">
           <div class="top-info">${player.rating}</div>
           <div class="stat-position">${player.position}</div>
@@ -206,10 +205,15 @@ else {
                   <span class="stat-value">${player.physical}</span>
               </div>
           </div>
+          <div class="card-actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-delete">Delete</button>
+          </div>
       </div>
-  `;
+    `;
+  }
 }
-}
+
 
 
 // show popup of adding with form and logic for adding a player

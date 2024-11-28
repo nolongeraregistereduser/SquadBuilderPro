@@ -461,3 +461,40 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+
+/* Add some basic styling for the edit & delete buttons */
+
+
+/* Hide the actions by default */
+.card-actions {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  gap: 110px; /* Space between buttons */
+  margin-top: -25px;
+}
+
+/* Show the buttons when hovering over a card */
+.card:hover .card-actions {
+  display: flex;
+}
+
+/* Button styles */
+.card-actions button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #3ce21e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-actions button:hover {
+  background-color: #1976D2;
+}
