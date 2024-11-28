@@ -237,34 +237,36 @@ else {
  playerForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // Get form values
+  // Récupérer les valeurs du formulaire
   const playerData = {
     name: document.getElementById('name').value,
     photo: document.getElementById('photo').value,
     position: document.getElementById('position').value,
     nationality: document.getElementById('nationality').value,
-    flag: document.getElementById('flag').value,
+    //flag: document.getElementById('flag').value,
     club: document.getElementById('club').value,
     logo: document.getElementById('logo').value,
     rating: document.getElementById('rating').value,
-    diving: document.getElementById('diving').value,
-    handling: document.getElementById('handling').value,
-    kicking: document.getElementById('kicking').value,
-    reflexes: document.getElementById('reflexes').value,
-    speed: document.getElementById('speed').value,
-    positioning: document.getElementById('positioning').value
+    diving: document.getElementById('diving').value || 'N/A',
+    handling: document.getElementById('handling').value || 'N/A',
+    kicking: document.getElementById('kicking').value || 'N/A',
+    reflexes: document.getElementById('reflexes').value || 'N/A',
+    speed: document.getElementById('speed').value || 'N/A',
+    positioning: document.getElementById('positioning').value || 'N/A'
   };
 
-  // Add player to player list
-  const playerElement = createPlayerCard(playerData); // Use playerData as input
-  const playersList = document.getElementById('playersList'); // Ensure playersList is defined
-  playersList.appendChild(playerElement);
+  // Ajouter la carte au conteneur
+  const playerCardHTML = createPlayerCard(playerData);
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = playerCardHTML.trim();
+  const playerCardElement = tempDiv.firstChild;
+  playersList.appendChild(playerCardElement);
 
-  // Close the popup form
-  const popupForm = document.querySelector('.popup-form'); // Ensure popupForm is properly selected
+  // Masquer le formulaire pop-up
   popupForm.style.display = 'none';
 
-  // Reset form
+  // Réinitialiser le formulaire
   playerForm.reset();
 });
+
 
