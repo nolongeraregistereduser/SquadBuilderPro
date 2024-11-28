@@ -379,6 +379,7 @@ body {
 .popup-content {
     background-color: #ffffff;
     width: 100%;
+
 }
 
 .close {
@@ -394,4 +395,69 @@ body {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+
+/* Overwrite form popup styling */
+
+.popup-form {
+  display: none; /* Hidden by default */
+  position: fixed; /* Keep centered on scroll */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* Adjust width */
+  max-height: 90vh; /* Avoid exceeding viewport height */
+  height: auto;
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  overflow-y: auto; /* Allow scrolling for long forms */
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Add a dim backdrop */
+  z-index: 999; /* Ensure popup stays above other elements */
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px; /* Align close button to the top-right */
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+#playerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  padding: 20px;
+}
+
+#playerForm label {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+#playerForm input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

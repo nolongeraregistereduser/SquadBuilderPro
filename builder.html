@@ -41,75 +41,75 @@
     </div>
 
     <!-- Add Player Popup -->
-  <div id="popupForm" class="popup-form">
-    <div class="popup-content">
-      <span id="closePopup" class="close-btn">&times;</span>
-      <h3>Add Player</h3>
-      <form id="playerForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="photo">Photo URL:</label>
-        <input type="url" id="photo" name="photo" required>
-
-        <label for="position">Position:</label>
-        <select id="position" name="position">
-          <option value="GK">Goalkeeper (GK)</option>
-          <option value="CB">Center Back (CB)</option>
-          <option value="RB">Right Back (RB)</option>
-          <option value="LB">Left Back (LB)</option>
-          <option value="CM">Central Midfielder (CM)</option>
-          <option value="LW">Left Winger (LW)</option>
-          <option value="ST">Striker (ST)</option>
-          <option value="RW">Right Winger (RW)</option>
+    <div id="popupForm" class="popup-form">
+      <div class="popup-content">
+        <span id="closePopup" class="close-btn">&times;</span>
+        <h3>Add Player</h3>
+        <form id="playerForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="e.g., Donnarumma" required>
+    
+          <label for="photo">Photo URL:</label>
+          <input type="url" id="photo" name="photo" placeholder="e.g., https://cdn.sofifa.net/players/230/621/25_120.png" required>
+    
+          <label for="position">Position:</label>
+          <select id="position" name="position" required>
+            <option value="GK">Goalkeeper (GK)</option>
+            <option value="CB">Center Back (CB)</option>
+            <option value="RB">Right Back (RB)</option>
+            <option value="LB">Left Back (LB)</option>
+            <option value="CM">Central Midfielder (CM)</option>
+            <option value="LW">Left Winger (LW)</option>
+            <option value="ST">Striker (ST)</option>
+            <option value="RW">Right Winger (RW)</option>
           </select>
-        <label for="nationality">Nationality:</label>
-        <select id="nationality" name="nationality">
-          <option value="it">Italy (IT)</option>
-          <option value="ma">Morocco (MA)</option>
-          <option value="fr">France (FR)</option>
-          <option value="us">United States (US)</option>
-          <option value="es">Spain (ES)</option>
-          <option value="de">Germany (DE)</option>
-          <option value="uk">United Kingdom (UK)</option>
-          <option value="jp">Japan (JP)</option>
-          <option value="cn">China (CN)</option>
-          <option value="in">India (IN)</option>
-        <label for="flag">Flag URL:</label>
-        <input type="url" id="flag" name="flag" required>
-
-        <label for="club">Club:</label>
-        <input type="text" id="club" name="club" required>
-
-        <label for="logo">Club Logo URL:</label>
-        <input type="url" id="logo" name="logo" required>
-
-        <label for="rating">Rating:</label>
-        <input type="number" id="rating" name="rating" required>
-
-        <label for="diving">Diving:</label>
-        <input type="number" id="diving" name="diving" required>
-
-        <label for="handling">Handling:</label>
-        <input type="number" id="handling" name="handling" required>
-
-        <label for="kicking">Kicking:</label>
-        <input type="number" id="kicking" name="kicking" required>
-
-        <label for="reflexes">Reflexes:</label>
-        <input type="number" id="reflexes" name="reflexes" required>
-
-        <label for="speed">Speed:</label>
-        <input type="number" id="speed" name="speed" required>
-
-        <label for="positioning">Positioning:</label>
-        <input type="number" id="positioning" name="positioning" required>
-
-        <button type="submit">Add Player</button>
-        <br>
-      </form>
+    
+          <label for="nationality">Nationality:</label>
+          <select id="nationality" name="nationality" required>
+            <option value="Italy" data-flag="https://cdn.sofifa.net/flags/it.png">Italy</option>
+            <option value="Morocco" data-flag="https://cdn.sofifa.net/flags/ma.png">Morocco</option>
+            <option value="France" data-flag="https://cdn.sofifa.net/flags/fr.png">France</option>
+            <option value="United States" data-flag="https://cdn.sofifa.net/flags/us.png">United States</option>
+            <option value="Spain" data-flag="https://cdn.sofifa.net/flags/es.png">Spain</option>
+            <option value="Germany" data-flag="https://cdn.sofifa.net/flags/de.png">Germany</option>
+            <option value="United Kingdom" data-flag="https://cdn.sofifa.net/flags/uk.png">United Kingdom</option>
+            <option value="Japan" data-flag="https://cdn.sofifa.net/flags/jp.png">Japan</option>
+            <option value="China" data-flag="https://cdn.sofifa.net/flags/cn.png">China</option>
+            <option value="India" data-flag="https://cdn.sofifa.net/flags/in.png">India</option>
+          </select>
+    
+          <label for="club">Club:</label>
+          <input type="text" id="club" name="club" placeholder="e.g., Paris Saint-Germain" required>
+    
+          <label for="logo">Club Logo URL:</label>
+          <input type="url" id="logo" name="logo" placeholder="e.g., https://cdn.sofifa.net/meta/team/591/120.png" required>
+    
+          <label for="rating">Rating:</label>
+          <input type="number" id="rating" name="rating" min="1" max="99" placeholder="e.g., 89" required>
+    
+          <label for="diving">Diving:</label>
+          <input type="number" id="diving" name="diving" min="1" max="99" placeholder="e.g., 88" required>
+    
+          <label for="handling">Handling:</label>
+          <input type="number" id="handling" name="handling" min="1" max="99" placeholder="e.g., 84" required>
+    
+          <label for="kicking">Kicking:</label>
+          <input type="number" id="kicking" name="kicking" min="1" max="99" placeholder="e.g., 75" required>
+    
+          <label for="reflexes">Reflexes:</label>
+          <input type="number" id="reflexes" name="reflexes" min="1" max="99" placeholder="e.g., 90" required>
+    
+          <label for="speed">Speed:</label>
+          <input type="number" id="speed" name="speed" min="1" max="99" placeholder="e.g., 50" required>
+    
+          <label for="positioning">Positioning:</label>
+          <input type="number" id="positioning" name="positioning" min="1" max="99" placeholder="e.g., 85" required>
+    
+          <button type="submit">Add Player</button>
+        </form>
+      </div>
     </div>
-  </div>
+    
 
   <script src="script-builder.js"></script>
 </body>
