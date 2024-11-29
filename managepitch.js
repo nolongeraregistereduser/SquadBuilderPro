@@ -82,8 +82,11 @@ function selectPlayer(playerName, playerImage) {
         deleteBtn.addEventListener('click', function(e) {
             e.stopPropagation();  // Stop the click from triggering the position selection
             e.preventDefault();    // Prevent any default button behavior
-            selectedPosition.innerHTML = '';  // Clear the position content
-            selectedPosition.dataset.playerName = '';  // Clear the player name data
+            const positionToDelete = this.closest('.player'); // Get the specific player position
+            if (positionToDelete) {
+                positionToDelete.innerHTML = '';  // Clear the position content
+                positionToDelete.dataset.playerName = '';  // Clear the player name data
+            }
         });
         selectedPosition.appendChild(deleteBtn);
 
