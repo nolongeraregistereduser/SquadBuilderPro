@@ -1,4 +1,5 @@
 let selectedPosition = null;
+let currentPlayers = {};
 
 function initializePitchEvents() {
     const pitch = document.getElementById('pitch');
@@ -25,6 +26,65 @@ function initializePitchEvents() {
     // Search functionality
     playerSearch.addEventListener('input', (e) => {
         searchPlayers(e.target.value);
+    });
+
+    // Store players when switching formations
+    const formationSelect = document.getElementById('formation');
+    formationSelect.addEventListener('change', (e) => {
+        // Store all current players before changing formation
+        const positions = document.querySelectorAll('.player');
+        positions.forEach(pos => {
+            if (pos.dataset.playerName && pos.querySelector('img')) {
+                const top = pos.style.top;
+                const left = pos.style.left;
+                const positionKey = `${top}-${left}`;
+                
+                currentPlayers[positionKey] = {
+                    name: pos.dataset.playerName,
+                    image: pos.querySelector('img').src,
+                    top: top,
+                    left: left
+                };
+            }
+        });
+
+        // After new formation is set, restore players
+        setTimeout(() => {
+            const newPositions = document.querySelectorAll('.player');
+            newPositions.forEach(pos => {
+                const positionKey = `${pos.style.top}-${pos.style.left}`;
+                const storedPlayer = currentPlayers[positionKey];
+                
+                if (storedPlayer) {
+                    pos.innerHTML = '';
+                    
+                    const playerImg = document.createElement('img');
+                    playerImg.src = storedPlayer.image;
+                    playerImg.alt = storedPlayer.name;
+                    playerImg.style.width = '100%';
+                    playerImg.style.height = '100%';
+                    playerImg.style.borderRadius = '50%';
+                    pos.appendChild(playerImg);
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'delete-player';
+                    deleteBtn.innerHTML = '×';
+                    deleteBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        const positionToDelete = this.closest('.player');
+                        if (positionToDelete) {
+                            const key = `${positionToDelete.style.top}-${positionToDelete.style.left}`;
+                            delete currentPlayers[key];
+                            positionToDelete.innerHTML = '';
+                            positionToDelete.dataset.playerName = '';
+                        }
+                    });
+                    pos.appendChild(deleteBtn);
+                    pos.dataset.playerName = storedPlayer.name;
+                }
+            });
+        }, 100);
     });
 }
 
@@ -80,18 +140,27 @@ function selectPlayer(playerName, playerImage) {
         deleteBtn.className = 'delete-player';
         deleteBtn.innerHTML = '×';
         deleteBtn.addEventListener('click', function(e) {
-            e.stopPropagation();  // Stop the click from triggering the position selection
-            e.preventDefault();    // Prevent any default button behavior
-            const positionToDelete = this.closest('.player'); // Get the specific player position
+            e.stopPropagation();
+            e.preventDefault();
+            const positionToDelete = this.closest('.player');
             if (positionToDelete) {
-                positionToDelete.innerHTML = '';  // Clear the position content
-                positionToDelete.dataset.playerName = '';  // Clear the player name data
+                const key = `${positionToDelete.style.top}-${positionToDelete.style.left}`;
+                delete currentPlayers[key];
+                positionToDelete.innerHTML = '';
+                positionToDelete.dataset.playerName = '';
             }
         });
         selectedPosition.appendChild(deleteBtn);
 
-        // Store player name for checking duplicates
+        // Store player name and update currentPlayers
         selectedPosition.dataset.playerName = playerName;
+        const positionKey = `${selectedPosition.style.top}-${selectedPosition.style.left}`;
+        currentPlayers[positionKey] = {
+            name: playerName,
+            image: playerImage,
+            top: selectedPosition.style.top,
+            left: selectedPosition.style.left
+        };
     }
     document.getElementById('searchPlayerPopup').style.display = 'none';
 }
