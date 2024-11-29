@@ -288,80 +288,92 @@ opacity: 0.8;
 
 /* Popup styling */
 .popup-form {
-display: none; /* Hidden by default */
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%); /* Center the popup in the left section */
-
-width: 500px;  /* Set the width of the form */
-height: 800px; /* Set the height of the form */
-
-background-color: #fff;
-color: #333;
-border-radius: 20px;
-padding: 20px;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-overflow-y: auto; /* Scrollable content if necessary */
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  max-height: 90vh;
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
 }
 
-.left-section {
-position: relative; /* Make this section the reference point for absolute positioning */
-/* so i can show the pop up in the left section */
-}
-
-
-/* Close button in popup */
-.close-btn {
-position: absolute;
-top: auto;
-left: auto;
- font-size: 50px;
-cursor: pointer;
-color: #333;
-}
-
-/* Popup form content */
-.popup-content {
-position: relative;
-max-width: auto;
-}
-
-/* Form inside the popup */
 #playerForm {
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 15px;
+}
+
+#playerForm h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 #playerForm label {
-margin-bottom: 5px;
-font-size: 16px;
-align-items: center;
+  min-width: 120px;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-#playerForm input {
-margin-bottom: 15px;
-padding: 10px;
-font-size: 16px;
-border: 1px solid #ccc;
-border-radius: 5px;
+#playerForm input,
+#playerForm select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
 }
 
-#playerForm button {
-padding: 10px 20px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
+#playerForm input:focus,
+#playerForm select:focus {
+  outline: none;
+  border-color: #2196F3;
 }
 
-#playerForm button:hover {
-opacity: 0.8;
+#playerForm button[type="submit"] {
+  margin-top: 15px;
+  background-color: #2196F3;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#playerForm button[type="submit"]:hover {
+  background-color: #1976D2;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 22px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #333;
 }
 
 
