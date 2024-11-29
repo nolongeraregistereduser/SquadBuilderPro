@@ -397,5 +397,3 @@ addPlayerButton.addEventListener('click', () => {
 closePopupButton.addEventListener('click', () => {
   popupForm.style.display = 'none';
 });
-
-
