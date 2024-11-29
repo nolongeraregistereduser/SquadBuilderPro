@@ -53,11 +53,42 @@ function searchPlayers(query) {
 
 function selectPlayer(playerName, playerImage) {
     if (selectedPosition) {
-        // Update the position with selected player
-        selectedPosition.innerHTML = `
-            <img src="${playerImage}" alt="${playerName}" style="width: 100%; height: 100%; border-radius: 50%;">
-        `;
-        // You might want to store additional player data here
+        // Check if player is already on the pitch
+        const existingPositions = document.querySelectorAll('.player');
+        for (let pos of existingPositions) {
+            if (pos !== selectedPosition && pos.dataset.playerName === playerName) {
+                alert('This player is already on the pitch!');
+                document.getElementById('searchPlayerPopup').style.display = 'none';
+                return;
+            }
+        }
+
+        // Clear the position first
+        selectedPosition.innerHTML = '';
+        
+        // Create and add the player image
+        const playerImg = document.createElement('img');
+        playerImg.src = playerImage;
+        playerImg.alt = playerName;
+        playerImg.style.width = '100%';
+        playerImg.style.height = '100%';
+        playerImg.style.borderRadius = '50%';
+        selectedPosition.appendChild(playerImg);
+        
+        // Create and add the delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-player';
+        deleteBtn.innerHTML = '×';
+        deleteBtn.addEventListener('click', function(e) {
+            e.stopPropagation();  // Stop the click from triggering the position selection
+            e.preventDefault();    // Prevent any default button behavior
+            selectedPosition.innerHTML = '';  // Clear the position content
+            selectedPosition.dataset.playerName = '';  // Clear the player name data
+        });
+        selectedPosition.appendChild(deleteBtn);
+
+        // Store player name for checking duplicates
+        selectedPosition.dataset.playerName = playerName;
     }
     document.getElementById('searchPlayerPopup').style.display = 'none';
 }
