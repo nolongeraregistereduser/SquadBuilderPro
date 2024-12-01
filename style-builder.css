@@ -649,3 +649,78 @@ object-fit: cover;
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(33, 150, 243, 0.4);
 }
+
+/* Default size for desktop */
+.player {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(33, 150, 243, 0.1);
+  border: 2px solid rgba(33, 150, 243, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Tablet size adjustments */
+@media (max-width: 1024px) {
+  .player {
+    width: 70px;
+    height: 70px;
+    font-size: 0.9em;
+  }
+  
+  .player:not([data-player-name]) {
+    font-size: 1em;
+  }
+}
+
+/* Mobile size adjustments */
+@media (max-width: 768px) {
+  .player {
+    width: 45px;
+    height: 45px;
+    font-size: 0.8em;
+    border-width: 1px;
+  }
+  
+  .player:not([data-player-name]) {
+    font-size: 0.9em;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+  }
+  
+  .player .delete-player {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    top: -5px;
+    right: -5px;
+  }
+}
+
+/* Small mobile size adjustments */
+@media (max-width: 480px) {
+  .player {
+    width: 35px;
+    height: 35px;
+    font-size: 0.7em;
+  }
+  
+  .player:not([data-player-name]) {
+    font-size: 0.8em;
+    box-shadow: 0 0 3px rgba(33, 150, 243, 0.3);
+  }
+  
+  .player .delete-player {
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    top: -3px;
+    right: -3px;
+  }
+}

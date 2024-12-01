@@ -3,16 +3,16 @@ const formationsData = [
     name: '4-3-3',
     positions: [
       { x: 400, y: 570, position: 'GK' },
-      { x: 320, y: 480, position: 'CB' },
-      { x: 550, y: 480, position: 'CB' },
-      { x: 780, y: 480, position: 'RB' },
-      { x: 90, y: 480, position: 'LB' },
-      { x: 160, y: 250, position: 'CM' },
-      { x: 700, y: 250, position: 'CM' },
-      { x: 430, y: 250, position: 'CM' },
-      { x: 200, y: 100, position: 'LW' },
-      { x: 430, y: 90, position: 'ST' },
-      { x: 650, y: 100, position: 'RW' }
+      { x: 300, y: 450, position: 'CB' },
+      { x: 500, y: 450, position: 'CB' },
+      { x: 750, y: 480, position: 'RB' },
+      { x: 50, y: 480, position: 'LB' },
+      { x: 100, y: 250, position: 'CM' },
+      { x: 650, y: 250, position: 'CM' },
+      { x: 380, y: 250, position: 'CM' },
+      { x: 160, y: 100, position: 'LW' },
+      { x: 390, y: 90, position: 'ST' },
+      { x: 600, y: 100, position: 'RW' }
     ]
   },
   {
