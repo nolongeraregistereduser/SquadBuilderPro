@@ -597,21 +597,55 @@ object-fit: cover;
 
 .player .delete-player {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background-color: #ff4444;
     color: white;
-    border: none;
+    border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
-    display: none;
+    display: block;
     padding: 0;
     line-height: 1;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.player .delete-player:hover {
+    background-color: #ff0000;
+    transform: scale(1.1);
 }
 
 .player:hover .delete-player {
     display: block;
+}
+
+/* Make text more visible */
+.player:not([data-player-name]) {
+  background-color: rgba(33, 150, 243, 0.2);
+  border: 2px solid rgba(33, 150, 243, 0.5);
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Enhanced styling for empty positions */
+.player:not([data-player-name]) {
+  background-color: rgba(33, 150, 243, 0.2);
+  border: 2px solid rgba(33, 150, 243, 0.5);
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Hover effect for empty positions */
+.player:not([data-player-name]):hover {
+  background-color: rgba(33, 150, 243, 0.3);
+  border-color: rgba(33, 150, 243, 0.7);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.4);
 }

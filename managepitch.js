@@ -113,6 +113,9 @@ function searchPlayers(query) {
 
 function selectPlayer(playerName, playerImage) {
     if (selectedPosition) {
+        // Store original position text
+        const positionText = selectedPosition.textContent;
+        
         // Check if player is already on the pitch
         const existingPositions = document.querySelectorAll('.player');
         for (let pos of existingPositions) {
@@ -125,6 +128,7 @@ function selectPlayer(playerName, playerImage) {
 
         // Clear the position first
         selectedPosition.innerHTML = '';
+        selectedPosition.dataset.playerName = '';
         
         // Create and add the player image
         const playerImg = document.createElement('img');
@@ -146,7 +150,7 @@ function selectPlayer(playerName, playerImage) {
             if (positionToDelete) {
                 const key = `${positionToDelete.style.top}-${positionToDelete.style.left}`;
                 delete currentPlayers[key];
-                positionToDelete.innerHTML = '';
+                positionToDelete.innerHTML = positionText; // Reset to original position text
                 positionToDelete.dataset.playerName = '';
             }
         });
