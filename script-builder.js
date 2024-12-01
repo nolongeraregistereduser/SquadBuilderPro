@@ -2,7 +2,7 @@ const formationsData = [
   {
     name: '4-3-3',
     positions: [
-      { x: 430, y: 570, position: 'GK' },
+      { x: 400, y: 570, position: 'GK' },
       { x: 320, y: 480, position: 'CB' },
       { x: 550, y: 480, position: 'CB' },
       { x: 780, y: 480, position: 'RB' },
