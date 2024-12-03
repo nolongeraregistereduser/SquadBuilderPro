@@ -791,3 +791,34 @@ object-fit: cover;
         padding: 1px 6px;
     }
 }
+
+.flag-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.player-flag {
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust for mobile */
+@media (max-width: 768px) {
+  .flag-container {
+    bottom: 25px;
+  }
+  
+  .player-flag {
+    width: 25px;
+    height: 16px;
+  }
+}

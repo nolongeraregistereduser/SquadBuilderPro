@@ -201,6 +201,9 @@ function createPlayerCard(player) {
               <span class="stat-value">${player.positioning}</span>
           </div>
       </div>
+      <div class="flag-container">
+        <img src="${player.flag}" alt="${player.nationality} flag" class="player-flag">
+      </div>
       <div class="card-actions">
           <button class="btn-edit">Edit</button>
           <button class="btn-delete">Delete</button>
@@ -246,6 +249,9 @@ function createPlayerCard(player) {
               <span class="stat-value">${player.physical}</span>
           </div>
       </div>
+      <div class="flag-container">
+        <img src="${player.flag}" alt="${player.nationality} flag" class="player-flag">
+      </div>
       <div class="card-actions">
           <button class="btn-edit">Edit</button>
           <button class="btn-delete">Delete</button>
@@ -265,6 +271,7 @@ function handleEditClick(editButton) {
   document.getElementById('photo').value = card.dataset.photo;
   document.getElementById('position').value = card.dataset.position;
   document.getElementById('nationality').value = card.dataset.nationality;
+  document.getElementById('flag').value = card.querySelector('.player-flag').src;
   document.getElementById('club').value = card.dataset.club;
   document.getElementById('logo').value = card.dataset.logo;
   document.getElementById('rating').value = card.dataset.rating;
@@ -305,6 +312,7 @@ playerForm.addEventListener('submit', (event) => {
     photo: document.getElementById('photo').value,
     position: position,
     nationality: document.getElementById('nationality').value,
+    flag: document.getElementById('flag').value,
     club: document.getElementById('club').value,
     logo: document.getElementById('logo').value,
     rating: document.getElementById('rating').value,
