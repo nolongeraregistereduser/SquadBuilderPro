@@ -113,6 +113,9 @@ function searchPlayers(query) {
 
 function selectPlayer(playerName, playerImage) {
     if (selectedPosition) {
+        // Store original position text
+        const positionText = selectedPosition.textContent;
+        
         // Check if player is already on the pitch
         const existingPositions = document.querySelectorAll('.player');
         for (let pos of existingPositions) {
@@ -123,9 +126,6 @@ function selectPlayer(playerName, playerImage) {
             }
         }
 
-        // Store original position text
-        const positionText = selectedPosition.textContent;
-        
         // Clear the position first
         selectedPosition.innerHTML = '';
         selectedPosition.dataset.playerName = '';
@@ -138,15 +138,6 @@ function selectPlayer(playerName, playerImage) {
         playerImg.style.height = '100%';
         playerImg.style.borderRadius = '50%';
         selectedPosition.appendChild(playerImg);
-
-        // Ajouter un div pour les infos du joueur
-        const playerInfo = document.createElement('div');
-        playerInfo.className = 'player-info';
-        playerInfo.innerHTML = `
-            <span class="player-name-display">${playerName}</span>
-            <span class="player-rating-display">${getRatingForPlayer(playerName)}</span>
-        `;
-        selectedPosition.appendChild(playerInfo);
         
         // Create and add the delete button
         const deleteBtn = document.createElement('button');
@@ -176,12 +167,6 @@ function selectPlayer(playerName, playerImage) {
         };
     }
     document.getElementById('searchPlayerPopup').style.display = 'none';
-}
-
-// Ajouter cette nouvelle fonction pour obtenir le rating du joueur
-function getRatingForPlayer(playerName) {
-    const playerCard = document.querySelector(`.card[data-name="${playerName}"]`);
-    return playerCard ? playerCard.querySelector('.top-info').textContent : '';
 }
 
 // Initialize when the document is loaded
