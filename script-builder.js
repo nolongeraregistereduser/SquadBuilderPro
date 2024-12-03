@@ -306,9 +306,19 @@ function handleEditClick(editButton) {
 playerForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  // Add name validation
+  const nameInput = document.getElementById('name');
+  const trimmedName = nameInput.value.trim();
+  
+  if (!trimmedName) {
+    alert('Please enter a valid player name');
+    nameInput.focus();
+    return;
+  }
+
   const position = document.getElementById('position').value;
   const playerData = {
-    name: document.getElementById('name').value,
+    name: trimmedName, // Use the trimmed name
     photo: document.getElementById('photo').value,
     position: position,
     nationality: document.getElementById('nationality').value,
@@ -365,6 +375,18 @@ playerForm.addEventListener('submit', (event) => {
   // Reset submit button text
   const submitButton = playerForm.querySelector('button[type="submit"]');
   submitButton.textContent = 'Add Player';
+});
+
+// Optional: Add real-time validation
+document.getElementById('name').addEventListener('input', (event) => {
+  const nameInput = event.target;
+  const trimmedValue = nameInput.value.trim();
+  
+  if (!trimmedValue) {
+    nameInput.setCustomValidity('Please enter a valid player name');
+  } else {
+    nameInput.setCustomValidity('');
+  }
 });
 
 // Helper function to add event listeners to card buttons
