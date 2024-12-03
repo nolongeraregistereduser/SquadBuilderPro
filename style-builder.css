@@ -775,13 +775,13 @@ object-fit: cover;
   }
 }
 
-/* Add player name above image on pitch */
+/* Add player name above image on pitch
 .player[data-player-name]::before {
     content: attr(data-player-name);
     position: absolute;
     top: -25px;
     left: 50%;
-}
+} */
 
 /* Adjust for mobile */
 @media (max-width: 768px) {
