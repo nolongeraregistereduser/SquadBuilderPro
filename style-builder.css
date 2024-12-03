@@ -683,42 +683,6 @@ object-fit: cover;
 /* Mobile size adjustments */
 @media (max-width: 768px) {
   .player {
-    width: 100%; /* Mobile: 1 card per row */
-    height: 350px; /* Slightly reduce height on mobile */
-  }
-  
-  .top-info {
-    font-size: 1.8rem;
-    top: 80px; /* Adjust top position */
-  }
-  
-  .stat-position {
-    font-size: 1rem;
-    top: 120px; /* Adjust top position */
-  }
-  
-  .player-name {
-    font-size: 0.9rem;
-    bottom: 85px; /* Move name lower */
-  }
-  
-  .stats {
-    bottom: 50px; /* Move stats lower */
-    gap: 5px;
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-  }
-  
-  .stat-value {
-    font-size: 0.9rem;
-  }
-}
-
-/* Small mobile size adjustments */
-@media (max-width: 480px) {
-  .player {
     width: 35px;
     height: 35px;
     font-size: 0.7em;
@@ -762,9 +726,11 @@ object-fit: cover;
   
   .player-name {
     font-size: 0.9rem;
+    bottom: 90px;
   }
   
   .stats {
+    bottom: 50px;
     gap: 5px;
   }
   
