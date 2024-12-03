@@ -776,3 +776,35 @@ object-fit: cover;
     font-size: 0.9rem;
   }
 }
+
+/* Add responsive styles for the popup */
+@media (max-width: 768px) {
+  .popup-form {
+    width: 90%; /* Use 90% of the viewport width */
+    max-height: 80vh; /* Adjust max height */
+    padding: 15px; /* Reduce padding */
+  }
+
+  #playerForm {
+    padding: 0 10px; /* Adjust form padding */
+  }
+
+  #playerForm label {
+    font-size: 13px; /* Slightly smaller font size */
+  }
+
+  #playerForm input,
+  #playerForm select {
+    font-size: 13px; /* Adjust input font size */
+    padding: 6px 10px; /* Adjust input padding */
+  }
+
+  #playerForm button[type="submit"] {
+    font-size: 14px; /* Adjust button font size */
+    padding: 8px; /* Adjust button padding */
+  }
+
+  .close-btn {
+    font-size: 20px; /* Adjust close button size */
+  }
+}
