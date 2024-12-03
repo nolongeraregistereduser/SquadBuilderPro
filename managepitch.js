@@ -115,6 +115,19 @@ function selectPlayer(playerName, playerImage) {
     if (selectedPosition) {
         // Store original position text
         const positionText = selectedPosition.textContent;
+
+
+            // Get the player's card to check their position
+        const playerCard = document.querySelector(`.card[data-name="${playerName}"]`);
+        const playerPosition = playerCard.querySelector('.stat-position').textContent;
+        
+        // Check if trying to place a GK
+        if (positionText === 'GK' && playerPosition !== 'GK') {
+            alert('This position is for Goalkeepers only!');
+            document.getElementById('searchPlayerPopup').style.display = 'none';
+            return;
+        }
+
         
         // Check if player is already on the pitch
         const existingPositions = document.querySelectorAll('.player');
