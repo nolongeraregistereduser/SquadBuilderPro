@@ -181,7 +181,7 @@ padding: 10px;
 /* Update the card styles */
 .card {
 position: relative;
-width: calc(30% - 15px); /* Desktop: 3 cards per row */
+width: calc(33.33% - 15px);
 margin: 0;
 height: 400px;
 background-image: url('src/assets/img/badge_gold.webp');
@@ -772,5 +772,68 @@ object-fit: cover;
 
   .close-btn {
     font-size: 20px; /* Adjust close button size */
+  }
+}
+
+/* Add player name above image on pitch */
+.player[data-player-name]::before {
+    content: attr(data-player-name);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+}
+
+/* Adjust for mobile */
+@media (max-width: 768px) {
+    .player[data-player-name]::before {
+        font-size: 10px;
+        top: -20px;
+        padding: 1px 6px;
+    }
+}
+
+.flag-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.player-flag {
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+/* Adjust for mobile */
+@media (max-width: 768px) {
+  .flag-container {
+    bottom: 2px;
+  }
+  
+  .player-flag {
+    width: 25px;
+    height: 16px;
+  }
+}
+
+/* Mobile adjustments for pitch */
+@media (max-width: 768px) {
+  .right-section {
+    width: 100%;
+  }
+
+  .pitch {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 892 / 725; /* Maintient le ratio d'aspect du terrain */
+    max-width: none;
   }
 }
