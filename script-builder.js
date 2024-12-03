@@ -295,6 +295,58 @@ function handleEditClick(editButton) {
   popupForm.style.display = 'flex';
 }
 
+// Function to save players to localStorage
+function savePlayersToLocalStorage() {
+  const cards = Array.from(playersList.children);
+  const players = cards.map(card => ({
+    name: card.dataset.name,
+    photo: card.dataset.photo,
+    position: card.dataset.position,
+    nationality: card.dataset.nationality,
+    club: card.dataset.club,
+    logo: card.dataset.logo,
+    rating: card.dataset.rating,
+    // Add stats based on position
+    ...(card.dataset.position === 'GK' 
+      ? {
+          diving: card.dataset.diving,
+          handling: card.dataset.handling,
+          kicking: card.dataset.kicking,
+          reflexes: card.dataset.reflexes,
+          speed: card.dataset.speed,
+          positioning: card.dataset.positioning,
+        }
+      : {
+          pace: card.dataset.pace,
+          shooting: card.dataset.shooting,
+          passing: card.dataset.passing,
+          dribbling: card.dataset.dribbling,
+          defending: card.dataset.defending,
+          physical: card.dataset.physical,
+        }
+    )
+  }));
+  
+  localStorage.setItem('players', JSON.stringify(players));
+}
+
+// Function to load players from localStorage
+function loadPlayersFromLocalStorage() {
+  const savedPlayers = localStorage.getItem('players');
+  if (savedPlayers) {
+    const players = JSON.parse(savedPlayers);
+    playersList.innerHTML = ''; // Clear existing cards
+    players.forEach(player => {
+      const playerCardHTML = createPlayerCard(player);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = playerCardHTML.trim();
+      const playerCardElement = tempDiv.firstChild;
+      playersList.appendChild(playerCardElement);
+    });
+    updateExistingCards();
+  }
+}
+
 // Modify the form submission handler
 playerForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -357,6 +409,9 @@ playerForm.addEventListener('submit', (event) => {
   // Reset submit button text
   const submitButton = playerForm.querySelector('button[type="submit"]');
   submitButton.textContent = 'Add Player';
+
+  // After adding/updating card, save to localStorage
+  savePlayersToLocalStorage();
 });
 
 // Helper function to add event listeners to card buttons
@@ -366,6 +421,7 @@ function addCardEventListeners(card) {
   
   deleteButton.addEventListener('click', function() {
     this.closest('.card').remove();
+    savePlayersToLocalStorage(); // Save after deletion
   });
   
   editButton.addEventListener('click', function() {
@@ -396,4 +452,10 @@ addPlayerButton.addEventListener('click', () => {
 
 closePopupButton.addEventListener('click', () => {
   popupForm.style.display = 'none';
+});
+
+// Load saved players when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  loadPlayersFromLocalStorage();
+  // ... rest of your initialization code ...
 });
