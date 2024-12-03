@@ -39,9 +39,10 @@ body {
 
 .player {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #2196F3;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(33, 150, 243, 0.1);
+  border: 2px solid rgba(33, 150, 243, 0.3);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -49,8 +50,12 @@ body {
   cursor: pointer;
   color: #fff;
   font-weight: bold;
-  transition: all 0.5s ease-in-out; /* Add this line for smooth transitions */
-/* for animation when switching */
+  transition: all 0.5s ease-in-out;
+}
+
+.player[data-player-name] {
+  background-color: transparent;
+  border: none;
 }
 
 .formation-select {
@@ -168,16 +173,16 @@ h2, h3 {
 #playersList {
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between; /* Add spacing between cards */
-gap: 15px; /* Adjust the gap between cards */
+gap: 15px;
+padding: 10px;
 }
 
 
 /* Update the card styles */
 .card {
 position: relative;
-width: calc(30% - 15px); /* Ensures three cards fit per row */
-margin: 10px;
+width: calc(30% - 15px); /* Desktop: 3 cards per row */
+margin: 0;
 height: 400px;
 background-image: url('src/assets/img/badge_gold.webp');
 background-size: cover;
@@ -592,21 +597,180 @@ object-fit: cover;
 
 .player .delete-player {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background-color: #ff4444;
     color: white;
-    border: none;
+    border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
-    display: none;
+    display: block;
     padding: 0;
     line-height: 1;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.player .delete-player:hover {
+    background-color: #ff0000;
+    transform: scale(1.1);
 }
 
 .player:hover .delete-player {
     display: block;
+}
+
+/* Make text more visible */
+.player:not([data-player-name]) {
+  background-color: rgba(33, 150, 243, 0.2);
+  border: 2px solid rgba(33, 150, 243, 0.5);
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Enhanced styling for empty positions */
+.player:not([data-player-name]) {
+  background-color: rgba(33, 150, 243, 0.2);
+  border: 2px solid rgba(33, 150, 243, 0.5);
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Hover effect for empty positions */
+.player:not([data-player-name]):hover {
+  background-color: rgba(33, 150, 243, 0.3);
+  border-color: rgba(33, 150, 243, 0.7);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.4);
+}
+
+/* Default size for desktop */
+.player {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(33, 150, 243, 0.1);
+  border: 2px solid rgba(33, 150, 243, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Tablet size adjustments */
+@media (max-width: 1024px) {
+  .player {
+    width: 70px;
+    height: 70px;
+    font-size: 0.9em;
+  }
+  
+  .player:not([data-player-name]) {
+    font-size: 1em;
+  }
+}
+
+/* Mobile size adjustments */
+@media (max-width: 768px) {
+  .player {
+    width: 35px;
+    height: 35px;
+    font-size: 0.7em;
+  }
+  
+  .player:not([data-player-name]) {
+    font-size: 0.8em;
+    box-shadow: 0 0 3px rgba(33, 150, 243, 0.3);
+  }
+  
+  .player .delete-player {
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    top: -3px;
+    right: -3px;
+  }
+}
+
+/* Add responsive breakpoints */
+@media (max-width: 1024px) {
+  .card {
+    width: calc(50% - 15px); /* Tablet: 2 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%; /* Mobile: 1 card per row */
+    height: 350px; /* Slightly reduce height on mobile */
+  }
+  
+  /* Adjust other card elements for mobile */
+  .top-info {
+    font-size: 1.8rem;
+  }
+  
+  .stat-position {
+    font-size: 1rem;
+  }
+  
+  .player-name {
+    font-size: 0.9rem;
+    bottom: 90px;
+  }
+  
+  .stats {
+    bottom: 50px;
+    gap: 5px;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .stat-value {
+    font-size: 0.9rem;
+  }
+}
+
+/* Add responsive styles for the popup */
+@media (max-width: 768px) {
+  .popup-form {
+    width: 90%; /* Use 90% of the viewport width */
+    max-height: 80vh; /* Adjust max height */
+    padding: 15px; /* Reduce padding */
+  }
+
+  #playerForm {
+    padding: 0 10px; /* Adjust form padding */
+  }
+
+  #playerForm label {
+    font-size: 13px; /* Slightly smaller font size */
+  }
+
+  #playerForm input,
+  #playerForm select {
+    font-size: 13px; /* Adjust input font size */
+    padding: 6px 10px; /* Adjust input padding */
+  }
+
+  #playerForm button[type="submit"] {
+    font-size: 14px; /* Adjust button font size */
+    padding: 8px; /* Adjust button padding */
+  }
+
+  .close-btn {
+    font-size: 20px; /* Adjust close button size */
+  }
 }
