@@ -115,6 +115,15 @@ function selectPlayer(playerName, playerImage) {
     if (selectedPosition) {
         // Store original position text
         const positionText = selectedPosition.textContent;
+
+      /* const playercard=document.querySelector(`.card[data-player]="${playerName}"`);
+       const playerposition=playercard.querySelector('.stat-position').textContent;
+
+       // verifier si le joueur est GK 
+
+       if (positionText!=='GK' && playerposition!=='GK' ){
+        alert('Not GK');}    */
+
         // Check if player is already on the pitch
         const existingPositions = document.querySelectorAll('.player');
         for (let pos of existingPositions) {
@@ -170,3 +179,24 @@ function selectPlayer(playerName, playerImage) {
 
 // Initialize when the document is loaded
 document.addEventListener('DOMContentLoaded', initializePitchEvents);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Pls=document.querySelectorAll('.player[data-player-name]');
+const name=[];
+Pls.forEach(player=> {
+ name.push(player.playerName);
+    }
+);
+console.log(name);
